@@ -1247,6 +1247,9 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 					sc.SetState(SCE_C_COMMENTLINEDOC|activitySet);
 				else
 					sc.SetState(SCE_C_COMMENTLINE|activitySet);
+			//+WELDER
+			// Trailing / in C means extend, but not in Zilch.
+			/*
 			} else if (sc.ch == '/'
 				   && (setOKBeforeRE.Contains(chPrevNonWhite)
 				       || followsReturnKeyword(sc, styler))
@@ -1254,6 +1257,8 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 				       || !FollowsPostfixOperator(sc, styler))) {
 				sc.SetState(SCE_C_REGEX|activitySet);	// JavaScript's RegEx
 				inRERange = false;
+			*/
+			//-WELDER
 			} else if (sc.ch == '\"') {
 				if (sc.chPrev == 'R') {
 					styler.Flush();

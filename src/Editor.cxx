@@ -5833,13 +5833,23 @@ sptr_t Editor::WndProc(unsigned int iMessage, uptr_t wParam, sptr_t lParam) {
 		VerticalCentreCaret();
 		break;
 
+    //+WELDER
+	// We have our own implementation of this for multi-caret.
+	/*
 	case SCI_MOVESELECTEDLINESUP:
 		MoveSelectedLinesUp();
 		break;
-
+    */
+	//-WELDER
+    
+    //+WELDER
+	// We have our own implementation of this for multi-caret.
+	/*
 	case SCI_MOVESELECTEDLINESDOWN:
 		MoveSelectedLinesDown();
 		break;
+    */
+	//-WELDER
 
 	case SCI_COPYRANGE:
 		CopyRangeToClipboard(static_cast<Sci::Position>(wParam), lParam);
@@ -5857,11 +5867,16 @@ sptr_t Editor::WndProc(unsigned int iMessage, uptr_t wParam, sptr_t lParam) {
 		EnsureCaretVisible();
 		break;
 
+    //+WELDER
+	// We have our own implementation of this for multi-caret.
+	/*
 	case SCI_CLEAR:
 		Clear();
 		SetLastXChosen();
 		EnsureCaretVisible();
 		break;
+    */
+	//-WELDER
 
 	case SCI_UNDO:
 		Undo();
@@ -6162,6 +6177,9 @@ sptr_t Editor::WndProc(unsigned int iMessage, uptr_t wParam, sptr_t lParam) {
 			AddStyledText(CharPtrFromSPtr(lParam), static_cast<Sci::Position>(wParam));
 		return 0;
 
+    //+WELDER
+	// We have our own implementation of this for multi-caret.
+	/*
 	case SCI_INSERTTEXT: {
 			if (lParam == 0)
 				return 0;
@@ -6176,6 +6194,8 @@ sptr_t Editor::WndProc(unsigned int iMessage, uptr_t wParam, sptr_t lParam) {
 			SetEmptySelection(newCurrent);
 			return 0;
 		}
+    */
+	//-WELDER
 
 	case SCI_CHANGEINSERTION:
 		PLATFORM_ASSERT(lParam);
@@ -6283,8 +6303,13 @@ sptr_t Editor::WndProc(unsigned int iMessage, uptr_t wParam, sptr_t lParam) {
 		}
 		break;
 
+    //+WELDER
+	// We have our own implementation of this for multi-caret.
+	/*
 	case SCI_GETCURRENTPOS:
 		return sel.IsRectangular() ? sel.Rectangular().caret.Position() : sel.MainCaret();
+    */
+	//-WELDER
 
 	case SCI_SETANCHOR:
 		if (sel.IsRectangular()) {

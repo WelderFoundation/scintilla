@@ -185,6 +185,9 @@ public:
 	std::vector<SelectionRange> RangesCopy() const {
 		return ranges;
 	}
+	//+WELDER
+	std::vector<SelectionRange>& GetRanges() { return ranges; }
+	//-WELDER
 };
 
 }

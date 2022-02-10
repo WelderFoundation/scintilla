@@ -27,6 +27,10 @@
 #define PLAT_TK 0
 #define PLAT_HAIKU 0
 
+//+WELDER
+// We don't use any OS features.
+#define PLAT_WELDER 1
+/*
 #if defined(FOX)
 #undef PLAT_FOX
 #define PLAT_FOX 1
@@ -75,6 +79,8 @@
 #define PLAT_WIN 1
 
 #endif
+*/
+//-WELDER
 
 namespace Scintilla {
 
